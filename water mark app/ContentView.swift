@@ -1,99 +1,123 @@
 import SwiftUI
-import UIKit
+import PhotosUI
 
 struct ContentView: View {
-    @State private var image: UIImage?
-    @State private var inputText = ""
-    @State private var showImagePicker = false
+    @State private var inputImage: UIImage?
+    @State private var showingImagePicker = false
+    @State private var waterMarkText: String = ""
+    @State private var showSavedAlert = false
 
     var body: some View {
-        NavigationView {
-            VStack {
-                if let image = image {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
-                }
+        VStack {
+            if let inputImage = inputImage {
+                Image(uiImage: inputImage)
+                    .resizable()
+                    .scaledToFit()
+                    .overlay(WaterMarkView(waterMarkText: waterMarkText, image: inputImage))
+            } else {
+                Text("Tap to select a photo")
+                    .foregroundColor(.secondary)
+            }
 
-                TextField("Введите текст", text: $inputText)
+            HStack {
+                Button("Load Photo") {
+                    showingImagePicker = true
+                }
+                TextField("Enter watermark text", text: $waterMarkText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-
-                Button("Загрузить изображение") {
-                    showImagePicker = true
+                Button("Save Photo") {
+                    guard let inputImage = inputImage else { return }
+                    let watermarkedImage = WaterMarkView(waterMarkText: waterMarkText, image: inputImage).snapshot()
+                    UIImageWriteToSavedPhotosAlbum(watermarkedImage, nil, nil, nil)
+                    showSavedAlert = true
                 }
+            }.padding()
 
-                Button("Сохранить текст в изображение") {
-                    if let image = image {
-                        // Здесь будет вызов функции для встраивания текста
-                        embedText(in: image, text: inputText)
-                    }
-                }
-            }
-            .navigationTitle("Водяные знаки")
-            .sheet(isPresented: $showImagePicker) {
-                ImagePicker(selectedImage: $image, sourceType: .photoLibrary)
-            }
+            Spacer()
         }
-    }
-    // Функция для встраивания текста в изображение
-    func embedText(in image: UIImage, text: String) {
-        let textColor = UIColor.white
-        let textFont = UIFont.boldSystemFont(ofSize: 12) // You can adjust size as needed
-
-        let scale = UIScreen.main.scale
-        UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
-
-        let textAttributes = [
-            NSAttributedString.Key.font: textFont,
-            NSAttributedString.Key.foregroundColor: textColor
-        ]
-        let textSize = text.size(withAttributes: textAttributes)
-        let rect = CGRect(x: 20, y: 20, width: textSize.width, height: textSize.height) // Adjust text positioning here
-
-        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
-        text.draw(in: rect, withAttributes: textAttributes)
-
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        DispatchQueue.main.async {
-            self.image = newImage
+//        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+//            PhotoPicker(image: $inputImage)
+     //   }
+        .alert(isPresented: $showSavedAlert) {
+            Alert(title: Text("Saved"), message: Text("Your image has been saved to your photos."), dismissButton: .default(Text("OK")))
         }
     }
 
+//    func loadImage() {
+        // This function would handle any post-processing after picking the image if needed
+   // }
 }
 
-struct ImagePicker: UIViewControllerRepresentable {
-    @Binding var selectedImage: UIImage?
-    var sourceType: UIImagePickerController.SourceType
+struct WaterMarkView: View {
+    var waterMarkText: String
+    var image: UIImage
 
-    func makeUIViewController(context: Context) -> UIImagePickerController {
-        let picker = UIImagePickerController()
+    var body: some View {
+        Image(uiImage: image)
+            .resizable()
+            .scaledToFit()
+            .overlay(
+                Text(waterMarkText)
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                    .background(Color.black.opacity(0.5))
+                    , alignment: .bottom
+            )
+    }
+
+    func snapshot() -> UIImage {
+        let controller = UIHostingController(rootView: self)
+        let view = controller.view
+        let targetSize = controller.view.intrinsicContentSize
+        view?.bounds = CGRect(origin: .zero, size: targetSize)
+        view?.backgroundColor = .clear
+
+        let renderer = UIGraphicsImageRenderer(size: targetSize)
+        return renderer.image { _ in
+            view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
+        }
+    }
+}
+
+struct PhotoPicker: UIViewControllerRepresentable {
+    @Binding var image: UIImage?
+
+    func makeUIViewController(context: Context) -> PHPickerViewController {
+        var config = PHPickerConfiguration()
+        config.selectionLimit = 1
+        config.filter = .images
+        let picker = PHPickerViewController(configuration: config)
         picker.delegate = context.coordinator
-        picker.sourceType = sourceType
         return picker
     }
 
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {
+    }
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
 
-    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-        var parent: ImagePicker
+    class Coordinator: NSObject, PHPickerViewControllerDelegate {
+        let parent: PhotoPicker
 
-        init(_ parent: ImagePicker) {
+        init(_ parent: PhotoPicker) {
             self.parent = parent
         }
 
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let image = info[.originalImage] as? UIImage {
-                parent.selectedImage = image
+        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+            picker.dismiss(animated: true)
+
+            guard let provider = results.first?.itemProvider, provider.canLoadObject(ofClass: UIImage.self) else {
+                return
             }
 
-            picker.dismiss(animated: true)
+            provider.loadObject(ofClass: UIImage.self) { image, _ in
+                DispatchQueue.main.async {
+                    self.parent.image = image as? UIImage
+                }
+            }
         }
     }
 }
@@ -101,4 +125,5 @@ struct ImagePicker: UIViewControllerRepresentable {
 #Preview {
     ContentView()
 }
+
 
