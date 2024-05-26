@@ -35,17 +35,17 @@ struct ContentView: View {
 
             Spacer()
         }
-//        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-//            PhotoPicker(image: $inputImage)
-     //   }
+        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+         PhotoPicker(image: $inputImage)
+       }
         .alert(isPresented: $showSavedAlert) {
             Alert(title: Text("Saved"), message: Text("Your image has been saved to your photos."), dismissButton: .default(Text("OK")))
         }
     }
 
-//    func loadImage() {
-        // This function would handle any post-processing after picking the image if needed
-   // }
+    func loadImage() {
+       
+   }
 }
 
 struct WaterMarkView: View {
