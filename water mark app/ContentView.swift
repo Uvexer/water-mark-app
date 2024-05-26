@@ -60,9 +60,10 @@ struct WaterMarkView: View {
                 Text(waterMarkText)
                     .font(.headline)
                     .foregroundColor(.white)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                    .padding(10)
                     .background(Color.black.opacity(0.5))
-                    , alignment: .bottom
+                    .cornerRadius(5),
+                alignment: .center
             )
     }
 
@@ -121,9 +122,4 @@ struct PhotoPicker: UIViewControllerRepresentable {
         }
     }
 }
-
-#Preview {
-    ContentView()
-}
-
 
