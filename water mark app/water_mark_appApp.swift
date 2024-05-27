@@ -1,10 +1,3 @@
-//
-//  water_mark_appApp.swift
-//  water mark app
-//
-//  Created by Bogdan Chupakhin on 20.05.2024.
-//
-
 import SwiftUI
 
 @main
