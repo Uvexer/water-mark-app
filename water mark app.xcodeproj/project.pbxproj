@@ -34,12 +34,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		287B8E7D2C04E9E0008633BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		28BB38A42BFB94C00004B265 = {
 			isa = PBXGroup;
 			children = (
 				287B8DDB2C047507008633BD /* info.plist */,
 				28BB38AF2BFB94C00004B265 /* water mark app */,
 				28BB38AE2BFB94C00004B265 /* Products */,
+				287B8E7D2C04E9E0008633BD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
