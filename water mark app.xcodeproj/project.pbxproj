@@ -12,6 +12,8 @@
 		28BB38B32BFB94C00004B265 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BB38B22BFB94C00004B265 /* ContentView.swift */; };
 		28BB38B52BFB94C40004B265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28BB38B42BFB94C40004B265 /* Assets.xcassets */; };
 		28BB38B82BFB94C40004B265 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28BB38B72BFB94C40004B265 /* Preview Assets.xcassets */; };
+		28C6FBFA2C05126100CA1964 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6FBF92C05126100CA1964 /* Coordinator.swift */; };
+		28C6FBFC2C0515E200CA1964 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6FBFB2C0515E200CA1964 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		28BB38B22BFB94C00004B265 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		28BB38B42BFB94C40004B265 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28BB38B72BFB94C40004B265 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		28C6FBF92C05126100CA1964 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		28C6FBFB2C0515E200CA1964 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +66,10 @@
 		28BB38AF2BFB94C00004B265 /* water mark app */ = {
 			isa = PBXGroup;
 			children = (
-				28BB38B02BFB94C00004B265 /* water_mark_appApp.swift */,
+				28C6FBFB2C0515E200CA1964 /* SettingsView.swift */,
+				28C6FBF92C05126100CA1964 /* Coordinator.swift */,
 				28BB38B22BFB94C00004B265 /* ContentView.swift */,
+				28BB38B02BFB94C00004B265 /* water_mark_appApp.swift */,
 				28BB38B42BFB94C40004B265 /* Assets.xcassets */,
 				28BB38B62BFB94C40004B265 /* Preview Content */,
 			);
@@ -150,7 +156,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				28BB38B32BFB94C00004B265 /* ContentView.swift in Sources */,
+				28C6FBFC2C0515E200CA1964 /* SettingsView.swift in Sources */,
 				28BB38B12BFB94C00004B265 /* water_mark_appApp.swift in Sources */,
+				28C6FBFA2C05126100CA1964 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

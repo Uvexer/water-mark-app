@@ -1,8 +1,16 @@
-//
-//  SettingsView.swift
-//  water mark app
-//
-//  Created by Bogdan Chupakhin on 27.05.2024.
-//
+import SwiftUI
 
-import Foundation
+struct SettingsView: View {
+    var body: some View {
+        VStack {
+            Text("Курсовая работа водяные знаки БИСТ-21-2")
+                .font(.largeTitle)
+                .padding()
+            Text("Выполнил: Чупахин Б.")
+                .font(.title)
+            Text("Проверил: Карпишук А.В.")
+                .font(.title)
+            Spacer()
+        }
+    }
+}

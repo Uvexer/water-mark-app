@@ -6,15 +6,23 @@ struct ContentView: View {
     @State private var showingImagePicker = false
     @State private var waterMarkText: String = ""
     @State private var showSavedAlert = false
+    @State private var showingSettings = false
 
     var body: some View {
         VStack {
             HStack {
-                Text("Водяные Знаки 💧")
+                Text("Водяные Знаки")
                     .font(.largeTitle)
                     .bold()
                     .padding()
                 Spacer()
+                Button(action: {
+                    showingSettings.toggle()
+                }) {
+                    Text(Image(systemName: "info.circle"))
+                        .font(.largeTitle)
+                        .padding()
+                }
             }
 
             Spacer()
@@ -77,15 +85,17 @@ struct ContentView: View {
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
             PhotoPicker(image: $inputImage)
         }
+        .sheet(isPresented: $showingSettings) {
+            SettingsView()
+                .presentationDetents([.medium])
+        }
         .alert(isPresented: $showSavedAlert) {
             Alert(title: Text("Saved"), message: Text("Your image has been saved to your photos."), dismissButton: .default(Text("OK")))
         }
     }
 
-    func loadImage() {
-        // This function would handle any post-processing after picking the image if needed
-    }
-
+    func loadImage() {}
+    
     func compressImage(image: UIImage, maxFileSize: Int) -> UIImage? {
         var compression: CGFloat = 1.0
         guard var imageData = image.jpegData(compressionQuality: compression) else { return nil }
@@ -122,48 +132,6 @@ struct ContentView: View {
                                   height: textSize.height)
 
             string.draw(with: textRect, options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
-        }
-    }
-}
-
-struct PhotoPicker: UIViewControllerRepresentable {
-    @Binding var image: UIImage?
-
-    func makeUIViewController(context: Context) -> PHPickerViewController {
-        var config = PHPickerConfiguration()
-        config.selectionLimit = 1
-        config.filter = .images
-        let picker = PHPickerViewController(configuration: config)
-        picker.delegate = context.coordinator
-        return picker
-    }
-
-    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    class Coordinator: NSObject, PHPickerViewControllerDelegate {
-        let parent: PhotoPicker
-
-        init(_ parent: PhotoPicker) {
-            self.parent = parent
-        }
-
-        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            picker.dismiss(animated: true)
-
-            guard let provider = results.first?.itemProvider, provider.canLoadObject(ofClass: UIImage.self) else {
-                return
-            }
-
-            provider.loadObject(ofClass: UIImage.self) { image, _ in
-                DispatchQueue.main.async {
-                    self.parent.image = image as? UIImage
-                }
-            }
         }
     }
 }
