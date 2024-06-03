@@ -8,7 +8,7 @@ struct ContentView: View {
     @State private var showSavedAlert = false
     @State private var showingSettings = false
     @State private var watermarkPosition: WatermarkPosition = .bottomRight
-
+//интерфейс основного экрана
     var body: some View {
         VStack {
             HStack {
@@ -107,6 +107,7 @@ struct ContentView: View {
 
     func loadImage() {}
     
+    //для сжатия изображения
     func compressImage(image: UIImage, maxFileSize: Int) -> UIImage? {
         var compression: CGFloat = 1.0
         guard var imageData = image.jpegData(compressionQuality: compression) else { return nil }
@@ -119,7 +120,7 @@ struct ContentView: View {
 
         return UIImage(data: imageData)
     }
-
+//добавление водяного знака
     func addWatermark(image: UIImage, watermark: String) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: image.size)
         return renderer.image { context in
@@ -146,7 +147,7 @@ struct ContentView: View {
     }
     
 }
-
+//позиция водяного знака
 enum WatermarkPosition: String, CaseIterable {
     case topLeft, topRight, bottomLeft, bottomRight, center
     
@@ -185,8 +186,4 @@ enum WatermarkPosition: String, CaseIterable {
         }
     }
     
-}
-
-#Preview{
-    ContentView()
 }

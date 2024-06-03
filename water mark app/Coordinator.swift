@@ -1,6 +1,6 @@
+// для выбора фотографии из приложения фото
 import SwiftUI
 import PhotosUI
-
 struct PhotoPicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
     

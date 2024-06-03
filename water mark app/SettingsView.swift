@@ -1,5 +1,5 @@
 import SwiftUI
-
+//Вью с описанием работы
 struct SettingsView: View {
     var body: some View {
         VStack {
