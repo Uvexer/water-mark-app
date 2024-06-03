@@ -7,6 +7,7 @@ struct ContentView: View {
     @State private var waterMarkText: String = ""
     @State private var showSavedAlert = false
     @State private var showingSettings = false
+    @State private var watermarkPosition: WatermarkPosition = .bottomRight
 
     var body: some View {
         VStack {
@@ -31,13 +32,16 @@ struct ContentView: View {
                 Image(uiImage: inputImage)
                     .resizable()
                     .scaledToFit()
-                    .overlay(Text(waterMarkText)
-                                .font(.headline)
-                                .foregroundColor(.white)
-                                .padding(10)
-                                .background(Color.black.opacity(0.5))
-                                .cornerRadius(5)
-                                .padding(), alignment: .bottom)
+                    .overlay(
+                        Text(waterMarkText)
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .background(Color.black.opacity(0.5))
+                            .cornerRadius(5)
+                            .padding(),
+                        alignment: watermarkPosition.alignment
+                    )
             } else {
                 Text("Фото для водяного знака")
                     .foregroundColor(.secondary)
@@ -79,8 +83,15 @@ struct ContentView: View {
                     }
                 }
                 .padding()
-            }
 
+                Picker("Положение водяного знака", selection: $watermarkPosition) {
+                    ForEach(WatermarkPosition.allCases, id: \.self) { position in
+                        Text(position.displayText).tag(position)
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+            }
         }
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
             PhotoPicker(image: $inputImage)
@@ -118,7 +129,7 @@ struct ContentView: View {
             paragraphStyle.alignment = .center
 
             let attrs: [NSAttributedString.Key: Any] = [
-                .font: UIFont.systemFont(ofSize: 100),
+                .font: UIFont.systemFont(ofSize: image.size.width / 10),
                 .foregroundColor: UIColor.white.withAlphaComponent(0.5),
                 .backgroundColor: UIColor.black.withAlphaComponent(0.5),
                 .paragraphStyle: paragraphStyle
@@ -126,12 +137,56 @@ struct ContentView: View {
 
             let string = NSString(string: watermark)
             let textSize = string.size(withAttributes: attrs)
-            let textRect = CGRect(x: (image.size.width - textSize.width) / 2,
-                                  y: image.size.height - textSize.height - 20,
-                                  width: textSize.width,
-                                  height: textSize.height)
+            let textPoint = watermarkPosition.point(for: image.size, textSize: textSize)
+
+            let textRect = CGRect(origin: textPoint, size: textSize)
 
             string.draw(with: textRect, options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
         }
     }
+    
+}
+
+enum WatermarkPosition: String, CaseIterable {
+    case topLeft, topRight, bottomLeft, bottomRight, center
+    
+    var displayText: String {
+        switch self {
+        case .topLeft: return "⬆️⬅️"
+        case .topRight: return "⬆️➡️"
+        case .bottomLeft: return "⬇️⬅️"
+        case .bottomRight: return "⬇️➡️"
+        case .center: return "⚪️"
+        }
+    }
+    
+    var alignment: Alignment {
+        switch self {
+        case .topLeft: return .topLeading
+        case .topRight: return .topTrailing
+        case .bottomLeft: return .bottomLeading
+        case .bottomRight: return .bottomTrailing
+        case .center: return .center
+        }
+    }
+    
+    func point(for imageSize: CGSize, textSize: CGSize) -> CGPoint {
+        switch self {
+        case .topLeft:
+            return CGPoint(x: 20, y: 20)
+        case .topRight:
+            return CGPoint(x: imageSize.width - textSize.width - 20, y: 20)
+        case .bottomLeft:
+            return CGPoint(x: 20, y: imageSize.height - textSize.height - 20)
+        case .bottomRight:
+            return CGPoint(x: imageSize.width - textSize.width - 20, y: imageSize.height - textSize.height - 20)
+        case .center:
+            return CGPoint(x: (imageSize.width - textSize.width) / 2, y: (imageSize.height - textSize.height) / 2)
+        }
+    }
+    
+}
+
+#Preview{
+    ContentView()
 }
