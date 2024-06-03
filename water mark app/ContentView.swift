@@ -2,12 +2,17 @@ import SwiftUI
 import PhotosUI
 
 struct ContentView: View {
-    @State private var inputImage: UIImage?
-    @State private var showingImagePicker = false
-    @State private var waterMarkText: String = ""
-    @State private var showSavedAlert = false
-    @State private var showingSettings = false
-    @State private var watermarkPosition: WatermarkPosition = .bottomRight
+    @State var inputImage: UIImage?
+    @State var showingImagePicker = false
+    @State var waterMarkText: String = ""
+    @State var showSavedAlert = false
+    @State var showingSettings = false
+    @State var watermarkPosition: WatermarkPosition = .bottomRight
+    
+    var publicInputImage: UIImage? {
+        inputImage
+    }
+    
 //интерфейс основного экрана
     var body: some View {
         VStack {

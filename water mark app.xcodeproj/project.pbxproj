@@ -13,7 +13,26 @@
 		28BB38B82BFB94C40004B265 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28BB38B72BFB94C40004B265 /* Preview Assets.xcassets */; };
 		28C6FBFA2C05126100CA1964 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6FBF92C05126100CA1964 /* Coordinator.swift */; };
 		28C6FBFC2C0515E200CA1964 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6FBFB2C0515E200CA1964 /* SettingsView.swift */; };
+		A866C71A2C0E731500946473 /* TestServ.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866C7192C0E731500946473 /* TestServ.swift */; };
+		A8EC22892C0E8582009AF32B /* UITestings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EC22882C0E8582009AF32B /* UITestings.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A866C7132C0E72EB00946473 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28BB38A52BFB94C00004B265 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28BB38AC2BFB94C00004B265;
+			remoteInfo = "water mark app";
+		};
+		A8EC22822C0E853F009AF32B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28BB38A52BFB94C00004B265 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28BB38AC2BFB94C00004B265;
+			remoteInfo = "water mark app";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		28BB38AD2BFB94C00004B265 /* water mark app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "water mark app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,10 +42,30 @@
 		28BB38B72BFB94C40004B265 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		28C6FBF92C05126100CA1964 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		28C6FBFB2C0515E200CA1964 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A866C70F2C0E72EB00946473 /* water mark appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "water mark appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A866C7182C0E731500946473 /* water mark appTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "water mark appTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		A866C7192C0E731500946473 /* TestServ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestServ.swift; sourceTree = "<group>"; };
+		A8EC227C2C0E853F009AF32B /* UITestings.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITestings.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8EC22872C0E8582009AF32B /* UITestings-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITestings-Bridging-Header.h"; sourceTree = "<group>"; };
+		A8EC22882C0E8582009AF32B /* UITestings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		28BB38AA2BFB94C00004B265 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A866C70C2C0E72EB00946473 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8EC22792C0E853F009AF32B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -47,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				28BB38AF2BFB94C00004B265 /* water mark app */,
+				A866C7102C0E72EB00946473 /* water mark appTests */,
+				A8EC227D2C0E853F009AF32B /* UITestings */,
 				28BB38AE2BFB94C00004B265 /* Products */,
 				287B8E7D2C04E9E0008633BD /* Frameworks */,
 			);
@@ -56,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				28BB38AD2BFB94C00004B265 /* water mark app.app */,
+				A866C70F2C0E72EB00946473 /* water mark appTests.xctest */,
+				A8EC227C2C0E853F009AF32B /* UITestings.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +124,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		A866C7102C0E72EB00946473 /* water mark appTests */ = {
+			isa = PBXGroup;
+			children = (
+				A866C7192C0E731500946473 /* TestServ.swift */,
+				A866C7182C0E731500946473 /* water mark appTests-Bridging-Header.h */,
+			);
+			path = "water mark appTests";
+			sourceTree = "<group>";
+		};
+		A8EC227D2C0E853F009AF32B /* UITestings */ = {
+			isa = PBXGroup;
+			children = (
+				A8EC22882C0E8582009AF32B /* UITestings.swift */,
+				A8EC22872C0E8582009AF32B /* UITestings-Bridging-Header.h */,
+			);
+			path = UITestings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -101,6 +162,42 @@
 			productReference = 28BB38AD2BFB94C00004B265 /* water mark app.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A866C70E2C0E72EB00946473 /* water mark appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A866C7152C0E72EB00946473 /* Build configuration list for PBXNativeTarget "water mark appTests" */;
+			buildPhases = (
+				A866C70B2C0E72EB00946473 /* Sources */,
+				A866C70C2C0E72EB00946473 /* Frameworks */,
+				A866C70D2C0E72EB00946473 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A866C7142C0E72EB00946473 /* PBXTargetDependency */,
+			);
+			name = "water mark appTests";
+			productName = "water mark appTests";
+			productReference = A866C70F2C0E72EB00946473 /* water mark appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A8EC227B2C0E853F009AF32B /* UITestings */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8EC22862C0E853F009AF32B /* Build configuration list for PBXNativeTarget "UITestings" */;
+			buildPhases = (
+				A8EC22782C0E853F009AF32B /* Sources */,
+				A8EC22792C0E853F009AF32B /* Frameworks */,
+				A8EC227A2C0E853F009AF32B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A8EC22832C0E853F009AF32B /* PBXTargetDependency */,
+			);
+			name = UITestings;
+			productName = UITestings;
+			productReference = A8EC227C2C0E853F009AF32B /* UITestings.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -108,11 +205,21 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					28BB38AC2BFB94C00004B265 = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					A866C70E2C0E72EB00946473 = {
+						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
+						TestTargetID = 28BB38AC2BFB94C00004B265;
+					};
+					A8EC227B2C0E853F009AF32B = {
+						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
+						TestTargetID = 28BB38AC2BFB94C00004B265;
 					};
 				};
 			};
@@ -130,6 +237,8 @@
 			projectRoot = "";
 			targets = (
 				28BB38AC2BFB94C00004B265 /* water mark app */,
+				A866C70E2C0E72EB00946473 /* water mark appTests */,
+				A8EC227B2C0E853F009AF32B /* UITestings */,
 			);
 		};
 /* End PBXProject section */
@@ -141,6 +250,20 @@
 			files = (
 				28BB38B82BFB94C40004B265 /* Preview Assets.xcassets in Resources */,
 				28BB38B52BFB94C40004B265 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A866C70D2C0E72EB00946473 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8EC227A2C0E853F009AF32B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,7 +281,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A866C70B2C0E72EB00946473 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A866C71A2C0E731500946473 /* TestServ.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8EC22782C0E853F009AF32B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8EC22892C0E8582009AF32B /* UITestings.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A866C7142C0E72EB00946473 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28BB38AC2BFB94C00004B265 /* water mark app */;
+			targetProxy = A866C7132C0E72EB00946473 /* PBXContainerItemProxy */;
+		};
+		A8EC22832C0E853F009AF32B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28BB38AC2BFB94C00004B265 /* water mark app */;
+			targetProxy = A8EC22822C0E853F009AF32B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		28BB38B92BFB94C40004B265 /* Debug */ = {
@@ -348,6 +500,96 @@
 			};
 			name = Release;
 		};
+		A866C7162C0E72EB00946473 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FK4VB24PPQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ghghg.water-mark-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "water mark appTests/water mark appTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/water mark app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/water mark app";
+			};
+			name = Debug;
+		};
+		A866C7172C0E72EB00946473 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ghghg.water-mark-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "water mark appTests/water mark appTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/water mark app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/water mark app";
+			};
+			name = Release;
+		};
+		A8EC22842C0E853F009AF32B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FK4VB24PPQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ghghg.UITestings;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "UITestings/UITestings-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = "water mark app";
+			};
+			name = Debug;
+		};
+		A8EC22852C0E853F009AF32B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ghghg.UITestings;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "UITestings/UITestings-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = "water mark app";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -365,6 +607,24 @@
 			buildConfigurations = (
 				28BB38BC2BFB94C40004B265 /* Debug */,
 				28BB38BD2BFB94C40004B265 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A866C7152C0E72EB00946473 /* Build configuration list for PBXNativeTarget "water mark appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A866C7162C0E72EB00946473 /* Debug */,
+				A866C7172C0E72EB00946473 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8EC22862C0E853F009AF32B /* Build configuration list for PBXNativeTarget "UITestings" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8EC22842C0E853F009AF32B /* Debug */,
+				A8EC22852C0E853F009AF32B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
