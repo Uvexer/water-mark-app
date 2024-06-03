@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		287B8DDC2C047507008633BD /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 287B8DDB2C047507008633BD /* info.plist */; };
 		28BB38B12BFB94C00004B265 /* water_mark_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BB38B02BFB94C00004B265 /* water_mark_appApp.swift */; };
 		28BB38B32BFB94C00004B265 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BB38B22BFB94C00004B265 /* ContentView.swift */; };
 		28BB38B52BFB94C40004B265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28BB38B42BFB94C40004B265 /* Assets.xcassets */; };
@@ -17,7 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		287B8DDB2C047507008633BD /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		28BB38AD2BFB94C00004B265 /* water mark app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "water mark app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28BB38B02BFB94C00004B265 /* water_mark_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = water_mark_appApp.swift; sourceTree = "<group>"; };
 		28BB38B22BFB94C00004B265 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,7 +46,6 @@
 		28BB38A42BFB94C00004B265 = {
 			isa = PBXGroup;
 			children = (
-				287B8DDB2C047507008633BD /* info.plist */,
 				28BB38AF2BFB94C00004B265 /* water mark app */,
 				28BB38AE2BFB94C00004B265 /* Products */,
 				287B8E7D2C04E9E0008633BD /* Frameworks */,
@@ -144,7 +141,6 @@
 			files = (
 				28BB38B82BFB94C40004B265 /* Preview Assets.xcassets in Resources */,
 				28BB38B52BFB94C40004B265 /* Assets.xcassets in Resources */,
-				287B8DDC2C047507008633BD /* info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +288,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"water mark app/Preview Content\"";
-				DEVELOPMENT_TEAM = 386WU4MUDG;
+				DEVELOPMENT_TEAM = FK4VB24PPQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "";
@@ -307,7 +303,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Bogd1104.water-mark-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "This-app-needs-access-to-save-watermarked-photos-to-your-photo-library.";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

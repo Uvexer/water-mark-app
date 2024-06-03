@@ -39,7 +39,7 @@ struct ContentView: View {
                                 .cornerRadius(5)
                                 .padding(), alignment: .bottom)
             } else {
-                Text("Tap to select a photo")
+                Text("Фото для водяного знака")
                     .foregroundColor(.secondary)
             }
 
@@ -50,7 +50,7 @@ struct ContentView: View {
                     Button(action: {
                         showingImagePicker = true
                     }) {
-                        Text("Load Photo")
+                        Text("Загрузить")
                             .font(.headline)
                             .foregroundColor(.white.opacity(0.5))
                             .padding()
@@ -58,7 +58,7 @@ struct ContentView: View {
                             .cornerRadius(10)
                     }
 
-                    TextField("Enter watermark text", text: $waterMarkText)
+                    TextField("", text: $waterMarkText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
 
@@ -70,7 +70,7 @@ struct ContentView: View {
                             showSavedAlert = true
                         }
                     }) {
-                        Text("Save Photo")
+                        Text("Сохранить")
                             .font(.headline)
                             .foregroundColor(.white.opacity(0.5))
                             .padding()
@@ -90,7 +90,7 @@ struct ContentView: View {
                 .presentationDetents([.medium])
         }
         .alert(isPresented: $showSavedAlert) {
-            Alert(title: Text("Saved"), message: Text("Your image has been saved to your photos."), dismissButton: .default(Text("OK")))
+            Alert(title: Text("Сохранено"), message: Text("Фото с водяным знаком сохранено"), dismissButton: .default(Text("OK")))
         }
     }
 
