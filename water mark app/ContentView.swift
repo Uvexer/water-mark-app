@@ -8,13 +8,26 @@ struct ContentView: View {
     @State var showSavedAlert = false
     @State var showingSettings = false
     @State var watermarkPosition: WatermarkPosition = .bottomRight
-    
+
     var publicInputImage: UIImage? {
         inputImage
     }
-    
-//интерфейс основного экрана
+
     var body: some View {
+        TabView {
+            mainView
+                .tabItem {
+                    Label("Главная", systemImage: "photo")
+                }
+            
+            SavedWatermarksView()
+                .tabItem {
+                    Label("Сохраненные", systemImage: "folder")
+                }
+        }
+    }
+
+    var mainView: some View {
         VStack {
             HStack {
                 Text("Водяные Знаки")
@@ -111,8 +124,7 @@ struct ContentView: View {
     }
 
     func loadImage() {}
-    
-    //для сжатия изображения
+
     func compressImage(image: UIImage, maxFileSize: Int) -> UIImage? {
         var compression: CGFloat = 1.0
         guard var imageData = image.jpegData(compressionQuality: compression) else { return nil }
@@ -125,7 +137,7 @@ struct ContentView: View {
 
         return UIImage(data: imageData)
     }
-//добавление водяного знака
+
     func addWatermark(image: UIImage, watermark: String) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: image.size)
         return renderer.image { context in
@@ -150,12 +162,20 @@ struct ContentView: View {
             string.draw(with: textRect, options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
         }
     }
-    
 }
-//позиция водяного знака
+
+struct SavedWatermarksView: View {
+    var body: some View {
+        Text("Сохраненные водяные знаки")
+            .font(.largeTitle)
+            .bold()
+            .padding()
+    }
+}
+
 enum WatermarkPosition: String, CaseIterable {
     case topLeft, topRight, bottomLeft, bottomRight, center
-    
+
     var displayText: String {
         switch self {
         case .topLeft: return "⬆️⬅️"
@@ -165,7 +185,7 @@ enum WatermarkPosition: String, CaseIterable {
         case .center: return "⚪️"
         }
     }
-    
+
     var alignment: Alignment {
         switch self {
         case .topLeft: return .topLeading
@@ -175,7 +195,7 @@ enum WatermarkPosition: String, CaseIterable {
         case .center: return .center
         }
     }
-    
+
     func point(for imageSize: CGSize, textSize: CGSize) -> CGPoint {
         switch self {
         case .topLeft:
@@ -190,5 +210,8 @@ enum WatermarkPosition: String, CaseIterable {
             return CGPoint(x: (imageSize.width - textSize.width) / 2, y: (imageSize.height - textSize.height) / 2)
         }
     }
-    
+}
+
+#Preview{
+    ContentView()
 }
